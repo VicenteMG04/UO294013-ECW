@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="utf-8">
+        <meta name="author" content="Vicente Megido García (UO294013)">
+        <meta name="description" content="Datos de contacto y formulario del sitio web personal de UO294013.">
+        <meta name="keywords" content="contacto, email, formulario, ingeniería web">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Contacto | Vicente Megido García</title>
+        <link rel="icon" type="image/x-icon" href="multimedia/favicon.ico">
+        <link rel="stylesheet" href="estilos/layout.css">
+        <link rel="stylesheet" href="estilos/estilo.css">
+    </head>
+    <body>
+        <header>
+            <h1>Vicente Megido García - UO294013</h1>
+            <nav aria-label="Navegación principal">
+                <a href="index.html">Inicio</a>
+                <a href="sobre-mi.html">Sobre mí</a>
+                <a href="intereses.html">Intereses</a>
+                <a href="indispensables.html">Indispensables</a>
+                <a href="contacto.html" aria-current="page">Contacto</a>
+            </nav>
+        </header>
+        <main>
+            <h2>Datos de contacto</h2>
+            <section aria-label="Datos y formulario de contacto">
+                <article>
+                    <h3>¡Hablemos!</h3>
+                    <p>Puedes consultar más información sobre mí, o ponerte en contacto conmigo (para colaborar, consultarme cualquier duda, o simplemente saludar) a través de los siguientes medios:</p>
+                    <ul>
+                        <li>Nombre: Vicente Megido García</li>
+                        <li>Email académico: <a href="mailto:uo294013@uniovi.es">uo294013@uniovi.es</a></li>
+                        <li>Email personal: <a href="mailto:vicentemegidogarcia@gmail.com">vicentemegidogarcia@gmail.com</a></li>
+                        <li>LinkedIn: <a href="https://www.linkedin.com/in/vicente-megido-garc%C3%ADa-9a67a934b/" target="_blank" rel="noopener noreferrer">Perfil de LinkedIn</a></li>
+                        <li>GitHub: <a href="https://github.com/VicenteMG04" target="_blank" rel="noopener noreferrer">Perfil de GitHub</a></li>
+                        <li>Ubicación: Oviedo, Principado de Asturias</li>
+                    </ul>
+                </article>
+                <form action="mailto:uo294013@uniovi.es" method="post" enctype="text/plain">
+                    <label>Nombre<input name="nombre" autocomplete="name" required></label>
+                    <label>Email<input name="email" type="email" autocomplete="email" required></label>
+                    <label>Mensaje<textarea name="mensaje" required></textarea></label>
+                    <button type="submit">Enviar mensaje</button>
+                </form>
+            </section>
+        </main>
+        <footer>
+            <p>&copy; 2026 Vicente Megido García (UO294013) · Máster Universitario en Ingeniería Web</p>
+        </footer>    
+    </body>
+</html>

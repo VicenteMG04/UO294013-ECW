@@ -1,0 +1,173 @@
+/*
+ * Estructura de mi sitio personal.
+ * HTML5 + CSS3 puro. 
+ * Se utiliza Flexbox para los flujos de una dimensión.
+ * Las medidas de tamaño y espacio son relativas: rem, % y fr.
+*/
+
+/* Especificidad 000 | 001 | 001 */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+/* Especificidad 001 */
+html {
+    min-width: 20rem;
+}
+
+/* Especificidad 001 */
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* Especificidad 002 */
+body > header {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+/* Especificidad 003 */
+body > header nav {
+    display: flex;
+    flex: 1 1 30rem;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+/* Especificidad 002 */
+nav a {
+    display: block;
+}
+
+/* Especificidad 001 | 001 | 001 */
+h1,
+h2,
+h3 {
+    justify-self: center;
+}
+
+/* Especificidad 011 */
+ul[aria-label] {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+/* Especificidad 004 */
+body > header nav ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+}
+
+/* Especificidad 001 */
+main {
+    flex: 1;
+    width: min(100% - 2rem, 72rem);
+}
+
+/* Especificidad 002 */
+main > section {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+}
+
+/* Especificidad 003 | 003 */
+main > section > article,
+main > section > figure {
+    flex: 1 1 18rem;
+    min-width: 0;
+}
+
+/* Especificidad 011 */
+ul[aria-label] {
+    justify-content: space-evenly;
+}
+
+/* Especificidad 001 */
+label {
+    display: block;
+}
+
+/* Especificidad 002 */
+figure img {
+    width: 100%;
+}
+
+/* Especificidad 001 */
+figcaption {
+    justify-self: center;
+}
+
+/* Especificidad 001 | 001 */
+input,
+textarea {
+    width: 100%;
+    max-height: 20rem;
+}
+
+/* Especificidad 001 */
+textarea {
+    min-height: 9rem;
+}
+
+/* Especificidad 003 */
+main > section > article {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Especificidad 004 */
+main > section > article > a,
+button {
+    display: inline-block;
+    align-self: center;
+}
+
+/* Especificidad 004 */
+main > section > article > p {
+    text-align: justify;
+}
+
+/* Especificidad 001 | 001 */
+img,
+video {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+/* Especificidad 001 */
+video,
+audio {
+    width: 100%;
+}
+
+/* Especificidad 001 */
+form {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+/* Especificidad 002 */
+form > p {
+    flex: 1 1 18rem;
+}
+
+/* Especificidad 012 */
+form > p:last-child {
+    flex-basis: 100%;
+}
+
+/* Especificidad 001 */
+footer {
+    display: flex;
+    justify-content: center;
+}

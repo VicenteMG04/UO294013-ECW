@@ -1,0 +1,106 @@
+SITIO WEB PERSONAL - Vicente Megido García (UO294013)
+=====================================================
+
+1. Tecnologías empleadas
+------------------------
+
+- HTML5 semántico: Estructura de cinco páginas, navegación consistente, 
+elementos nativos de HTML5.
+- CSS3: Variables personalizadas y uso de Flexbox para una interfaz 
+responsive y accesible.
+- JavaScript: No es necesario en esta primera versión, se omite su uso
+al no necesitar generar código dinámico.
+- Frameworks: No se utiliza ningún framework para evitar introducir
+complejidad innecesaria.
+
+2. Justificación
+----------------
+
+Se ha elegido una implementación vanilla porque el enunciado pide un sitio
+personal sencillo, técnicamente riguroso y preparado para la asignatura de
+Experiencia de Usuario (UX). Evitar frameworks reduce dependencias,
+facilita la validación W3C y hace visible la relación entre estructura,
+presentación y comportamiento.
+
+3. Bibliotecas y herramientas adicionales
+-----------------------------------------
+
+No se utilizan bibliotecas, frameworks ni herramientas de compilación. Las
+fotografías, vídeos y audios se cargan localmente (carpeta `/multimedia`).
+
+4. Decisión de marcado
+----------------------
+
+Las páginas no utilizan elementos `div` ni atributos `class` o `id`. La
+maquetación se realiza con elementos semánticos HTML5 (`header`, `nav`, 
+`main`, `section`, `article`, `figure`, `form` y `footer`) y el CSS 
+selecciona elementos y atributos ARIA. Los campos del formulario usan
+etiquetas envolventes, por lo que no necesitan atributos `for`/`id`.
+
+5. Estructura
+-------------
+
+- index.html: Portada, presentación del sitio.
+- sobre-mi.html: Información personal y formación.
+- intereses.html: Aficiones y principales temas de interés.
+- indispensables.html: Más información y curiosidades.
+- contacto.html: Datos personales y formulario de contacto.
+- layout.css: Estructura responsive y de distribución de contenidos.
+- estilo.css: Tema, estilos, colores, tamaños, etc.
+- multimedia/: fotografías (vicente.jpg, retro.jpeg, concierto.jpeg, futbol.jpeg,
+videojuegos.jpeg, naturaleza.jpeg, gastronomia.jpeg, f1.jpeg), vídeo (video.mp4),
+audio (cancion.mp3) y favicon.ico.
+
+6. Comprobaciones realizadas
+----------------------------
+
+- Cada página tiene `doctype`, `lang`, `charset`, `viewport`, `title` y 
+`meta description` únicos.
+- Cada página tiene un único `h1`, landmarks semánticos y navegación con
+`aria-current`.
+- Las imágenes tienen `alt`. Audio y vídeo no se reproducen 
+automáticamente.
+- El formulario tiene etiquetas asociadas y controles nativos.
+- El contraste está verificado con WAVE y los documentos validados con
+Nu HTML Checker y CSS Validator.
+
+7. Validación
+-------------
+
+Los cinco HTML y las dos hojas de estilo se han validado con el Nu Html Checker
+(vnu 26.10.2) sin errores ni advertencias.
+
+Este sitio es también la plantilla del Trabajo (IV): UO294013-XML/modelo.xml
+regenera estos mismos cinco HTML (se comprueba con npm run verify en esa
+carpeta) y reutiliza estos estilos sin cambios.
+
+8. Despliegue
+-------------
+
+El sitio es 100 % estático: basta servir esta carpeta con cualquier servidor
+web. No requiere Node, compilación ni base de datos.
+
+URL de despliegue:  http://156.35.98.140/ecw/web/
+(Servidor Nginx de la máquina virtual de la Escuela; puede requerir estar en la
+red de la Universidad o VPN)
+
+Prueba local, desde esta carpeta:
+
+    python -m http.server 8000
+
+y abrir http://localhost:8000/ . También funciona abriendo index.html
+directamente, porque todas las rutas son relativas.
+
+Despliegue en la máquina virtual (Nginx, ruta /ecw/web/): copiar el contenido de
+esta carpeta (HTML, estilos/ y multimedia/) al directorio que Nginx sirve para
+/ecw/web/, por ejemplo con scp -r. Los archivos de esta carpeta coinciden con los
+desplegados.
+
+9. Software y versiones
+-----------------------
+
+- Editor: Visual Studio Code.
+- Validación: Nu Html Checker (vnu) 26.10.2, WAVE para contraste.
+- Navegador de pruebas: Chrome 154.
+- Servidor: Nginx 1.28.3 (Ubuntu).
+- Sin bibliotecas, frameworks ni herramientas de compilación.
