@@ -4,12 +4,14 @@ SITIO WEB PERSONAL - Vicente Megido García (UO294013)
 1. Tecnologías empleadas
 ------------------------
 
-- HTML5 semántico: Estructura de cinco páginas, navegación consistente, 
-elementos nativos de HTML5.
-- CSS3: Variables personalizadas y uso de Flexbox para una interfaz 
+- HTML5 semántico: Estructura de cinco páginas más una página 404, navegación
+consistente, elementos nativos de HTML5.
+- CSS3: Variables personalizadas y uso de Flexbox para una interfaz
 responsive y accesible.
-- JavaScript: No es necesario en esta primera versión, se omite su uso
-al no necesitar generar código dinámico.
+- JavaScript (vanilla, mínimo y opcional): cambio de idioma (es/en), envío del
+formulario de contacto, ventanas de ayuda, buscador y menú colapsable en móvil. Sin
+JavaScript el sitio sigue siendo completo en español (solo dejan de funcionar esos
+elementos; el menú se muestra siempre desplegado gracias a estilos/sin-js.css).
 - Frameworks: No se utiliza ningún framework para evitar introducir
 complejidad innecesaria.
 
@@ -26,61 +28,119 @@ presentación y comportamiento.
 -----------------------------------------
 
 No se utilizan bibliotecas, frameworks ni herramientas de compilación. Las
-fotografías, vídeos y audios se cargan localmente (carpeta `/multimedia`).
+fotografías (WebP), vídeos, audios e iconos (SVG) se cargan localmente
+(carpeta `/multimedia`). Las imágenes se han redimensionado a 960 px de lado
+máximo, y el audio (MP3 128 kbps) y el vídeo (MP4 H.264 540p) se han
+recomprimido para reducir el tiempo de carga.
 
 4. Decisión de marcado
 ----------------------
 
 Las páginas no utilizan elementos `div` ni atributos `class` o `id`. La
-maquetación se realiza con elementos semánticos HTML5 (`header`, `nav`, 
-`main`, `section`, `article`, `figure`, `form` y `footer`) y el CSS 
+maquetación se realiza con elementos semánticos HTML5 (`header`, `nav`,
+`main`, `section`, `article`, `figure`, `form` y `footer`) y el CSS
 selecciona elementos y atributos ARIA. Los campos del formulario usan
 etiquetas envolventes, por lo que no necesitan atributos `for`/`id`.
+Cada página tiene un único `h1` (su título); las tarjetas bajo él son `h2` y, si hay
+bloques con título propio (Sobre mí), sus tarjetas son `h3`. La cabecera lleva el
+logotipo (logo.svg: VMG en blanco sobre fondo coral con margen interior; el
+favicon.ico se genera a partir de él) enlazado a la portada, no un `h1`.
+Las preguntas rápidas usan `details`/`summary` plegables y los datos de
+contacto una lista de definición (`dl`, `dt`, `dd`).
+No se incluye enlace de salto al contenido porque requeriría un `id`; la
+navegación por landmarks (`header`, `nav`, `main`) cubre esa necesidad.
 
-5. Estructura
+5. Idiomas (es/en)
+------------------
+
+- El HTML contiene siempre el texto en español.
+- Los elementos traducibles llevan `data-i18n="clave"` (texto) o
+`data-i18n-alt`, `data-i18n-aria-label`, `data-i18n-content` (atributos).
+- scripts/textos.js contiene el diccionario (es y en) y la función texto().
+- scripts/idioma.js aplica el idioma, activa el interruptor de píldoras ES/EN de la
+cabecera (`fieldset` con botones de radio nativos), formatea la fecha con `Intl`
+y guarda la elección en localStorage.
+- Para añadir un idioma, basta con añadir un bloque con las mismas claves
+en textos.js y otra opción `label` con su `input type="radio"` en el `fieldset`.
+
+6. Buscador y ayuda
+-------------------
+
+- Buscador global: el formulario de la cabecera (`search`) envía la consulta a
+buscar.html?q=...; scripts/buscador.js descarga las páginas del sitio, extrae el
+texto de su `main` en el idioma actual y muestra las coincidencias resaltadas con
+`mark` (sin distinguir mayúsculas ni tildes). Requiere servir el sitio por HTTP(S).
+- Menú móvil (menu.js): en pantallas estrechas navegación, buscador e idioma se
+agrupan tras un botón de menú (`aria-expanded`, cierra con Esc). La cabecera parte con
+`data-menu="cerrado"` en el HTML para evitar saltos de diseño.
+- Ayuda: junto a cada título principal hay un botón (i) que abre un `dialog` nativo
+con su explicación (scripts/ayuda.js). Se cierra con Esc, con el botón o pulsando fuera.
+- Los diálogos de ayuda se animan al abrir, salvo con `prefers-reduced-motion`. Los
+desplegables (`details`) no llevan animación: la apertura animada solo funcionaba
+la primera vez y el cierre animado exige `interpolate-size` y `allow-discrete`,
+que el validador CSS del W3C aún no acepta.
+
+6b. Formulario de contacto
+--------------------------
+
+No hay servidor propio. scripts/formulario.js valida el formulario (atributos
+nativos), abre el cliente de correo con `mailto:` ya redactado y muestra un
+aviso de confirmación (`output`). Se evita `action="mailto:"` porque Lighthouse
+lo marca como contenido mixto / no seguro (Buenas prácticas 79).
+
+7. Estructura
 -------------
 
 - index.html: Portada, presentación del sitio.
-- sobre-mi.html: Información personal y formación.
+- sobre-mi.html: Información personal, formación, experiencia, rasgos y avales.
 - intereses.html: Aficiones y principales temas de interés.
 - indispensables.html: Más información y curiosidades.
 - contacto.html: Datos personales y formulario de contacto.
+- buscar.html: Resultados del buscador global.
+- 404.html: Página de error personalizada (GitHub Pages). Usa
+`<base href="/UO294013-ECW/">`, por lo que solo funciona en esa ruta de despliegue.
 - layout.css: Estructura responsive y de distribución de contenidos.
 - estilo.css: Tema, estilos, colores, tamaños, etc.
-- multimedia/: fotografías (vicente.jpg, retro.jpeg, concierto.jpeg, futbol.jpeg,
-videojuegos.jpeg, naturaleza.jpeg, gastronomia.jpeg, f1.jpeg), vídeo (video.mp4),
-audio (cancion.mp3) y favicon.ico.
+- scripts/: textos.js, idioma.js, menu.js, ayuda.js, buscador.js y formulario.js.
+- estilos/sin-js.css: solo se carga dentro de `noscript`.
+- multimedia/: fotografías (vicente, retro, concierto, futbol, videojuegos,
+naturaleza, gastronomia, f1 en .webp), vídeo (video.mp4) y su póster
+(poster.webp), audio (cancion.mp3), iconos (logo, github, linkedin, correo, buscar, info, menu y cerrar en .svg)
+y favicon.ico.
 
-6. Comprobaciones realizadas
+8. Comprobaciones realizadas
 ----------------------------
 
-- Cada página tiene `doctype`, `lang`, `charset`, `viewport`, `title` y 
+- Cada página tiene `doctype`, `lang`, `charset`, `viewport`, `title` y
 `meta description` únicos.
 - Cada página tiene un único `h1`, landmarks semánticos y navegación con
-`aria-current`.
-- Las imágenes tienen `alt`. Audio y vídeo no se reproducen 
-automáticamente.
+`aria-current`. Cada página termina con un `nav` de páginas anterior/siguiente
+dentro de `main`, para poder navegar en Modo Lectura.
+- Las imágenes tienen `alt`, `width` y `height` (sin saltos de diseño) y las
+que no están en la primera pantalla usan `loading="lazy"`. Audio y vídeo no se
+reproducen automáticamente ni se precargan (`preload="none"`).
 - El formulario tiene etiquetas asociadas y controles nativos.
-- El contraste está verificado con WAVE y los documentos validados con
-Nu HTML Checker y CSS Validator.
+- La fecha de última actualización está en el pie (`time`) y debe actualizarse
+a mano en las seis páginas al publicar cambios.
+- El contraste se verifica con WAVE; los enlaces y botones cumplen WCAG AA
+también en los estados :hover y :focus-visible.
+- Lighthouse en local (móvil): 100 en rendimiento, accesibilidad, buenas
+prácticas y SEO en las cinco páginas.
 
-7. Validación
+9. Validación
 -------------
 
-Los cinco HTML y las dos hojas de estilo se han validado con el Nu Html Checker
+Los siete HTML y las dos hojas de estilo se han validado con el Nu Html Checker
 (vnu 26.10.2) sin errores ni advertencias.
 
-Este sitio es también la plantilla del Trabajo (IV): UO294013-XML/modelo.xml
-regenera estos mismos cinco HTML (se comprueba con npm run verify en esa
-carpeta) y reutiliza estos estilos sin cambios.
-
-8. Despliegue
--------------
+10. Despliegue
+--------------
 
 El sitio es 100 % estático: basta servir esta carpeta con cualquier servidor
 web. No requiere Node, compilación ni base de datos.
 
-URL de despliegue:  http://156.35.98.140/ecw/web/
+URL de despliegue (GitHub Pages):  https://vicentemg04.github.io/UO294013-ECW/
+URL anterior:  http://156.35.98.140/ecw/web/
 (Servidor Nginx de la máquina virtual de la Escuela; puede requerir estar en la
 red de la Universidad o VPN)
 
@@ -88,19 +148,19 @@ Prueba local, desde esta carpeta:
 
     python -m http.server 8000
 
-y abrir http://localhost:8000/ . También funciona abriendo index.html
-directamente, porque todas las rutas son relativas.
+y abrir http://localhost:8000/ . Las rutas son relativas, pero los scripts de
+idioma y formulario requieren servir la carpeta por HTTP (o abrir index.html
+directamente, donde también funcionan al ser scripts clásicos, no módulos).
 
 Despliegue en la máquina virtual (Nginx, ruta /ecw/web/): copiar el contenido de
-esta carpeta (HTML, estilos/ y multimedia/) al directorio que Nginx sirve para
-/ecw/web/, por ejemplo con scp -r. Los archivos de esta carpeta coinciden con los
-desplegados.
+esta carpeta (HTML, estilos/, scripts/ y multimedia/) al directorio que Nginx
+sirve para /ecw/web/, por ejemplo con scp -r.
 
-9. Software y versiones
------------------------
+11. Software y versiones
+------------------------
 
 - Editor: Visual Studio Code.
-- Validación: Nu Html Checker (vnu) 26.10.2, WAVE para contraste.
+- Validación: Nu Html Checker (vnu) 26.10.2, WAVE para contraste, Lighthouse.
 - Navegador de pruebas: Chrome 154.
-- Servidor: Nginx 1.28.3 (Ubuntu).
+- Servidor: Nginx 1.28.3 (Ubuntu) / GitHub Pages.
 - Sin bibliotecas, frameworks ni herramientas de compilación.

@@ -3,60 +3,100 @@
     <head>
         <meta charset="utf-8">
         <meta name="author" content="Vicente Megido García (UO294013)">
-        <meta name="description" content="Sitio web personal de UO294013, estudiante del Máster Universitario en Ingeniería Web.">
+        <meta name="description" content="Sitio web personal de UO294013, estudiante del Máster Universitario en Ingeniería Web." data-i18n-content="index.descripcion">
         <meta name="keywords" content="ingeniería web, portfolio, sitio personal">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Inicio | Vicente Megido García</title>
+        <title data-i18n="index.titulo">Inicio | Vicente Megido García</title>
         <link rel="icon" type="image/x-icon" href="multimedia/favicon.ico">
         <link rel="stylesheet" href="estilos/layout.css">
         <link rel="stylesheet" href="estilos/estilo.css">
+        <noscript><link rel="stylesheet" href="estilos/sin-js.css"></noscript>
+        <script src="scripts/textos.js" defer></script>
+        <script src="scripts/menu.js" defer></script>
+        <script src="scripts/idioma.js" defer></script>
+        <script src="scripts/ayuda.js" defer></script>
     </head>
     <body>
-        <header>
-            <h1>Vicente Megido García - UO294013</h1>
-            <nav aria-label="Navegación principal">
-                <a href="index.html" aria-current="page">Inicio</a>
-                <a href="sobre-mi.html">Sobre mí</a>
-                <a href="intereses.html">Intereses</a>
-                <a href="indispensables.html">Indispensables</a>
-                <a href="contacto.html">Contacto</a>
+        <header data-menu="cerrado">
+            <a href="index.html"><img src="multimedia/logo.svg" width="40" height="40" alt="Vicente Megido García - Inicio" data-i18n-alt="menu.logo"></a>
+            <button type="button" aria-expanded="false" aria-label="Menú" data-i18n-aria-label="menu.etiqueta" hidden><img src="multimedia/menu.svg" width="24" height="24" alt=""></button>
+            <nav aria-label="Navegación principal" data-i18n-aria-label="nav.principal">
+                <ul>
+                    <li><a href="index.html" aria-current="page" data-i18n="nav.inicio">Inicio</a></li>
+                    <li><a href="sobre-mi.html" data-i18n="nav.sobre-mi">Sobre mí</a></li>
+                    <li><a href="intereses.html" data-i18n="nav.intereses">Intereses</a></li>
+                    <li><a href="indispensables.html" data-i18n="nav.indispensables">Indispensables</a></li>
+                    <li><a href="contacto.html" data-i18n="nav.contacto">Contacto</a></li>
+                </ul>
             </nav>
+            <search>
+                <form action="buscar.html">
+                    <input type="search" name="q" required placeholder="Buscar" aria-label="Buscar" data-i18n-placeholder="buscar.placeholder" data-i18n-aria-label="buscar.placeholder">
+                    <button type="submit" aria-label="Buscar" data-i18n-aria-label="buscar.boton"><img src="multimedia/buscar.svg" width="20" height="20" alt=""></button>
+                </form>
+            </search>
+            <fieldset aria-label="Idioma" data-i18n-aria-label="idioma.etiqueta" hidden>
+                <label><input type="radio" name="idioma" value="es" aria-label="Español" checked><span>ES</span></label>
+                <label><input type="radio" name="idioma" value="en" aria-label="English"><span>EN</span></label>
+            </fieldset>
         </header>
         <main>
-            <h2>¡Bienvenid@s a mi sitio web para ECW!</h2>
-            <section aria-label="Presentación">
+            <header>
+                <h1 data-i18n="index.bienvenida">¡Bienvenid@s a mi sitio web para ECW!</h1>
+                <button type="button" aria-label="Ayuda sobre esta sección" data-i18n-aria-label="ayuda.abrir" hidden><img src="multimedia/info.svg" width="20" height="20" alt=""></button>
+                <dialog aria-label="Ayuda" data-i18n-aria-label="ayuda.titulo">
+                    <h2 data-i18n="ayuda.titulo">Ayuda</h2>
+                    <p data-i18n="ayuda.index">Esta es la portada. Desde aquí puedes leer una breve presentación y entrar en cada sección con las tarjetas o con el menú superior.</p>
+                    <form method="dialog">
+                        <button data-i18n="ayuda.cerrar">Cerrar</button>
+                    </form>
+                </dialog>
+            </header>
+            <section aria-label="Presentación" data-i18n-aria-label="index.sec-presentacion">
                 <article>
-                    <h3>Presentación</h3>
-                    <p>Soy Vicente, una persona curiosa, creativa y con muchas ganas de aprender.</p>
-                    <p>Este es mi pequeño espacio para compartir un poco de información sobre mí y mis intereses mientras realizo una página web para la asignatura ECW, del Máster Universitario en Ingeniería Web.</p>
-                    <p>Espero que os guste y podáis conocerme un poco mejor. ¡Gracias por visitar mi sitio web!</p>
-                    <p>¿Tienes alguna pregunta o comentario? ¡No dudes en decírmelo! Contacta conmigo haciendo clic <a href="contacto.html">aquí</a>.</p>
+                    <h2 data-i18n="index.presentacion.titulo">Presentación</h2>
+                    <p data-i18n="index.presentacion.p1">Soy Vicente, una persona curiosa, creativa y con muchas ganas de aprender.</p>
+                    <p data-i18n="index.presentacion.p2">Este es mi pequeño espacio para compartir un poco de información sobre mí y mis intereses mientras realizo una página web para la asignatura ECW, del Máster Universitario en Ingeniería Web.</p>
+                    <p data-i18n="index.presentacion.p3">Espero que os guste y podáis conocerme un poco mejor. ¡Gracias por visitar mi sitio web!</p>
+                    <p data-i18n="index.presentacion.p4">¿Tienes alguna pregunta o comentario? ¡No dudes en decírmelo!</p>
+                    <a href="contacto.html" data-i18n="index.presentacion.enlace">Contacta conmigo</a>
                 </article>
                 <figure>
-                    <img src="multimedia/vicente.jpg" alt="Yo, Vicente Megido García, creador de este sitio web">
-                    <figcaption>Vicente Megido García, estudiante del Máster Universitario en Ingeniería Web</figcaption>
+                    <img src="multimedia/vicente.webp" width="960" height="960" alt="Yo, Vicente Megido García, creador de este sitio web" data-i18n-alt="index.foto.alt">
+                    <figcaption data-i18n="index.foto.pie">Vicente Megido García, estudiante del Máster Universitario en Ingeniería Web</figcaption>
                 </figure>
             </section>
-            <section aria-label="Secciones del sitio">
+            <section aria-label="Secciones del sitio" data-i18n-aria-label="index.sec-secciones">
                 <article>
-                    <h3>La persona tras pantalla</h3>
-                    <p>Una presentación breve, mis principios y el camino que me trajo hasta aquí.</p>
-                    <a href="sobre-mi.html">Leer sobre mí</a>
+                    <h2 data-i18n="index.sobre-mi.titulo">La persona tras pantalla</h2>
+                    <p data-i18n="index.sobre-mi.texto">Una presentación breve, mis principios y el camino que me trajo hasta aquí.</p>
+                    <a href="sobre-mi.html" data-i18n="index.sobre-mi.enlace">Leer sobre mí</a>
                 </article>
                 <article>
-                    <h3>Lo que me mueve</h3>
-                    <p>Deporte, música, redes sociales y aficiones que me definen y marcan mi día a día.</p>
-                    <a href="intereses.html">Ver intereses</a>
+                    <h2 data-i18n="index.intereses.titulo">Lo que me mueve</h2>
+                    <p data-i18n="index.intereses.texto">Deporte, música, redes sociales y aficiones que me definen y marcan mi día a día.</p>
+                    <a href="intereses.html" data-i18n="index.intereses.enlace">Ver intereses</a>
                 </article>
                 <article>
-                    <h3>Indispensables</h3>
-                    <p>Una selección de preguntas rápidas, curiosidades y secretos que mueven mi vida.</p>
-                    <a href="indispensables.html">Ver mis indispensables</a>
+                    <h2 data-i18n="index.indispensables.titulo">Indispensables</h2>
+                    <p data-i18n="index.indispensables.texto">Una selección de preguntas rápidas, curiosidades y secretos que mueven mi vida.</p>
+                    <a href="indispensables.html" data-i18n="index.indispensables.enlace">Ver mis indispensables</a>
                 </article>
             </section>
+            <nav aria-label="Páginas anterior y siguiente" data-i18n-aria-label="nav.paginas">
+                <a rel="next" href="sobre-mi.html" data-i18n="nav.sobre-mi">Sobre mí</a>
+            </nav>
         </main>
         <footer>
-            <p>&copy; 2026 Vicente Megido García (UO294013) · Máster Universitario en Ingeniería Web</p>
+            <p data-i18n="pie.copyright">© 2026 Vicente Megido García (UO294013) · Máster Universitario en Ingeniería Web</p>
+            <p><span data-i18n="pie.actualizacion">Última actualización:</span> <time datetime="2026-11-11">11 de noviembre de 2026</time></p>
+            <nav aria-label="Redes sociales y correo" data-i18n-aria-label="pie.redes">
+                <ul>
+                    <li><a href="https://github.com/VicenteMG04" target="_blank" rel="noopener noreferrer"><img src="multimedia/github.svg" width="20" height="20" alt="">GitHub</a></li>
+                    <li><a href="https://www.linkedin.com/in/vicente-megido-garc%C3%ADa-9a67a934b/" target="_blank" rel="noopener noreferrer"><img src="multimedia/linkedin.svg" width="20" height="20" alt="">LinkedIn</a></li>
+                    <li><a href="mailto:vicentemegidogarcia@gmail.com"><img src="multimedia/correo.svg" width="20" height="20" alt=""><span data-i18n="pie.correo">Correo</span></a></li>
+                </ul>
+            </nav>
         </footer>
     </body>
 </html>

@@ -1,0 +1,11 @@
+/*
+ * Solo se carga si el navegador no ejecuta JavaScript (<noscript>).
+ * En pantallas pequeñas el HTML parte con el menú plegado (data-menu="cerrado") para evitar saltos de diseño;
+ * sin JavaScript no habría botón para abrirlo, así que aquí se muestra siempre completo.
+*/
+
+/* Especificidad 023 */
+body > header[data-menu="cerrado"] > nav,
+body > header[data-menu="cerrado"] > search {
+    display: block;
+}

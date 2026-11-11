@@ -3,80 +3,120 @@
     <head>
         <meta charset="utf-8">
         <meta name="author" content="Vicente Megido García (UO294013)">
-        <meta name="description" content="Aficiones y principales temas de interés.">
-        <meta name="keywords" content="aficiones, viajes, música, fotografía, diseño">
+        <meta name="description" content="Aficiones y principales temas de interés." data-i18n-content="intereses.descripcion">
+        <meta name="keywords" content="aficiones, música, fútbol, videojuegos, naturaleza, gastronomía, fórmula 1">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Intereses | Vicente Megido García</title>
+        <title data-i18n="intereses.titulo">Intereses | Vicente Megido García</title>
         <link rel="icon" type="image/x-icon" href="multimedia/favicon.ico">
         <link rel="stylesheet" href="estilos/layout.css">
         <link rel="stylesheet" href="estilos/estilo.css">
+        <noscript><link rel="stylesheet" href="estilos/sin-js.css"></noscript>
+        <script src="scripts/textos.js" defer></script>
+        <script src="scripts/menu.js" defer></script>
+        <script src="scripts/idioma.js" defer></script>
+        <script src="scripts/ayuda.js" defer></script>
     </head>
     <body>
-        <header>
-            <h1>Vicente Megido García - UO294013</h1>
-            <nav aria-label="Navegación principal">
-                <a href="index.html">Inicio</a>
-                <a href="sobre-mi.html">Sobre mí</a>
-                <a href="intereses.html" aria-current="page">Intereses</a>
-                <a href="indispensables.html">Indispensables</a>
-                <a href="contacto.html">Contacto</a>
+        <header data-menu="cerrado">
+            <a href="index.html"><img src="multimedia/logo.svg" width="40" height="40" alt="Vicente Megido García - Inicio" data-i18n-alt="menu.logo"></a>
+            <button type="button" aria-expanded="false" aria-label="Menú" data-i18n-aria-label="menu.etiqueta" hidden><img src="multimedia/menu.svg" width="24" height="24" alt=""></button>
+            <nav aria-label="Navegación principal" data-i18n-aria-label="nav.principal">
+                <ul>
+                    <li><a href="index.html" data-i18n="nav.inicio">Inicio</a></li>
+                    <li><a href="sobre-mi.html" data-i18n="nav.sobre-mi">Sobre mí</a></li>
+                    <li><a href="intereses.html" aria-current="page" data-i18n="nav.intereses">Intereses</a></li>
+                    <li><a href="indispensables.html" data-i18n="nav.indispensables">Indispensables</a></li>
+                    <li><a href="contacto.html" data-i18n="nav.contacto">Contacto</a></li>
+                </ul>
             </nav>
+            <search>
+                <form action="buscar.html">
+                    <input type="search" name="q" required placeholder="Buscar" aria-label="Buscar" data-i18n-placeholder="buscar.placeholder" data-i18n-aria-label="buscar.placeholder">
+                    <button type="submit" aria-label="Buscar" data-i18n-aria-label="buscar.boton"><img src="multimedia/buscar.svg" width="20" height="20" alt=""></button>
+                </form>
+            </search>
+            <fieldset aria-label="Idioma" data-i18n-aria-label="idioma.etiqueta" hidden>
+                <label><input type="radio" name="idioma" value="es" aria-label="Español" checked><span>ES</span></label>
+                <label><input type="radio" name="idioma" value="en" aria-label="English"><span>EN</span></label>
+            </fieldset>
         </header>
         <main>
-            <h2>Fuera de la pantalla - Mis mayores intereses</h2>
-            <section aria-label="Galería de intereses">
+            <header>
+                <h1 data-i18n="intereses.h2">Fuera de la pantalla - Mis mayores intereses</h1>
+                <button type="button" aria-label="Ayuda sobre esta sección" data-i18n-aria-label="ayuda.abrir" hidden><img src="multimedia/info.svg" width="20" height="20" alt=""></button>
+                <dialog aria-label="Ayuda" data-i18n-aria-label="ayuda.titulo">
+                    <h2 data-i18n="ayuda.titulo">Ayuda</h2>
+                    <p data-i18n="ayuda.intereses">Galería de mis aficiones. Cada tarjeta lleva una foto con su descripción; las imágenes se cargan a medida que te desplazas por la página.</p>
+                    <form method="dialog">
+                        <button data-i18n="ayuda.cerrar">Cerrar</button>
+                    </form>
+                </dialog>
+            </header>
+            <section aria-label="Galería de intereses" data-i18n-aria-label="intereses.sec-galeria">
                 <article>
                     <figure>
-                        <img src="multimedia/concierto.jpeg" alt="Imagen del auditorio de Oviedo previo a un concierto de la FSO">
-                        <figcaption>La música, la banda sonora de mi vida.</figcaption>
+                        <img src="multimedia/concierto.webp" width="960" height="720" alt="Imagen del auditorio de Oviedo previo a un concierto de la FSO" data-i18n-alt="intereses.musica.alt">
+                        <figcaption data-i18n="intereses.musica.pie">La música, la banda sonora de mi vida.</figcaption>
                     </figure>
-                    <h3>La música</h3>
-                    <p>Hoy en día no puedo vivir sin escuchar música. Es una parte fundamental de mi día a día. El deporte, el trabajo, el estudio, la rutina... Todo es mejor con música.</p>
+                    <h2 data-i18n="intereses.musica.titulo">La música</h2>
+                    <p data-i18n="intereses.musica.texto">Hoy en día no puedo vivir sin escuchar música. Es una parte fundamental de mi día a día. El deporte, el trabajo, el estudio, la rutina... Todo es mejor con música.</p>
                 </article>
                 <article>
                     <figure>
-                        <img src="multimedia/futbol.jpeg" alt="Recibimiento previo a un partido de fútbol">
-                        <figcaption>El deporte rey, una ilusión compartida.</figcaption>
+                        <img src="multimedia/futbol.webp" width="960" height="697" loading="lazy" alt="Recibimiento previo a un partido de fútbol" data-i18n-alt="intereses.futbol.alt">
+                        <figcaption data-i18n="intereses.futbol.pie">El deporte rey, una ilusión compartida.</figcaption>
                     </figure>
-                    <h3>El fútbol</h3>
-                    <p>Mi mayor motivo para viajar y la unión más estrecha con mi padre. Cada fin de semana, la excusa ideal para compartir una tarde juntos.</p>
+                    <h2 data-i18n="intereses.futbol.titulo">El fútbol</h2>
+                    <p data-i18n="intereses.futbol.texto">Mi mayor motivo para viajar y la unión más estrecha con mi padre. Cada fin de semana, la excusa ideal para compartir una tarde juntos.</p>
                 </article>
                 <article>
                     <figure>
-                        <img src="multimedia/videojuegos.jpeg" alt="Mapa de Hollow Knight, videojuego de acción y aventura">
-                        <figcaption>El mundo virtual, mi mayor hobby.</figcaption>
+                        <img src="multimedia/videojuegos.webp" width="960" height="680" loading="lazy" alt="Mapa de Hollow Knight, videojuego de acción y aventura" data-i18n-alt="intereses.videojuegos.alt">
+                        <figcaption data-i18n="intereses.videojuegos.pie">El mundo virtual, mi mayor hobby.</figcaption>
                     </figure>
-                    <h3>Los videojuegos</h3>
-                    <p>Una forma de entretenimiento y desafío constante. Me encanta explorar nuevos mundos y enfrentar retos emocionantes. Desde bien pequeño, pasando por varias generaciones de consolas.</p>
+                    <h2 data-i18n="intereses.videojuegos.titulo">Los videojuegos</h2>
+                    <p data-i18n="intereses.videojuegos.texto">Una forma de entretenimiento y desafío constante. Me encanta explorar nuevos mundos y enfrentar retos emocionantes. Desde bien pequeño, pasando por varias generaciones de consolas.</p>
                 </article>
                 <article>
                     <figure>
-                        <img src="multimedia/naturaleza.jpeg" alt="El paisaje del puerto de San Isidro, en la Cordillera Cantábrica">
-                        <figcaption>Fauna, flora y carretera.</figcaption>
+                        <img src="multimedia/naturaleza.webp" width="960" height="691" loading="lazy" alt="El paisaje del puerto de San Isidro, en la Cordillera Cantábrica" data-i18n-alt="intereses.naturaleza.alt">
+                        <figcaption data-i18n="intereses.naturaleza.pie">Fauna, flora y carretera.</figcaption>
                     </figure>
-                    <h3>La naturaleza y los viajes</h3>
-                    <p>Me encanta salir a disfrutar de los paisajes naturales y conectar con el entorno. La naturaleza es una fuente de inspiración y paz para mí.</p>
+                    <h2 data-i18n="intereses.naturaleza.titulo">La naturaleza y los viajes</h2>
+                    <p data-i18n="intereses.naturaleza.texto">Me encanta salir a disfrutar de los paisajes naturales y conectar con el entorno. La naturaleza es una fuente de inspiración y paz para mí.</p>
                 </article>
                 <article>
                     <figure>
-                        <img src="multimedia/gastronomia.jpeg" alt="Platos de un menú delicatessen en un restaurante asturiano">
-                        <figcaption>La comida y sus encantos.</figcaption>
+                        <img src="multimedia/gastronomia.webp" width="960" height="720" loading="lazy" alt="Platos de un menú delicatessen en un restaurante asturiano" data-i18n-alt="intereses.gastronomia.alt">
+                        <figcaption data-i18n="intereses.gastronomia.pie">La comida y sus encantos.</figcaption>
                     </figure>
-                    <h3>La gastronomía</h3>
-                    <p>Me encanta probar nuevos sabores y descubrir platos deliciosos. La comida es mi mayor placer y disfrute en la vida.</p>
+                    <h2 data-i18n="intereses.gastronomia.titulo">La gastronomía</h2>
+                    <p data-i18n="intereses.gastronomia.texto">Me encanta probar nuevos sabores y descubrir platos deliciosos. La comida es mi mayor placer y disfrute en la vida.</p>
                 </article>
                 <article>
                     <figure>
-                        <img src="multimedia/f1.jpeg" alt="Museo Fernando Alonso">
-                        <figcaption>La mezcla perfecta: velocidad e ingeniería.</figcaption>
+                        <img src="multimedia/f1.webp" width="960" height="720" loading="lazy" alt="Museo Fernando Alonso" data-i18n-alt="intereses.f1.alt">
+                        <figcaption data-i18n="intereses.f1.pie">La mezcla perfecta: velocidad e ingeniería.</figcaption>
                     </figure>
-                    <h3>La Fórmula 1</h3>
-                    <p>La emoción de la velocidad y la precisión de la ingeniería combinadas en un único deporte. Soy un fanático del automovilismo.</p>
+                    <h2 data-i18n="intereses.f1.titulo">La Fórmula 1</h2>
+                    <p data-i18n="intereses.f1.texto">La emoción de la velocidad y la precisión de la ingeniería combinadas en un único deporte. Soy un fanático del automovilismo.</p>
                 </article>
             </section>
+            <nav aria-label="Páginas anterior y siguiente" data-i18n-aria-label="nav.paginas">
+                <a rel="prev" href="sobre-mi.html" data-i18n="nav.sobre-mi">Sobre mí</a>
+                <a rel="next" href="indispensables.html" data-i18n="nav.indispensables">Indispensables</a>
+            </nav>
         </main>
         <footer>
-            <p>&copy; 2026 Vicente Megido García (UO294013) · Máster Universitario en Ingeniería Web</p>
-        </footer>       
+            <p data-i18n="pie.copyright">© 2026 Vicente Megido García (UO294013) · Máster Universitario en Ingeniería Web</p>
+            <p><span data-i18n="pie.actualizacion">Última actualización:</span> <time datetime="2026-11-11">11 de noviembre de 2026</time></p>
+            <nav aria-label="Redes sociales y correo" data-i18n-aria-label="pie.redes">
+                <ul>
+                    <li><a href="https://github.com/VicenteMG04" target="_blank" rel="noopener noreferrer"><img src="multimedia/github.svg" width="20" height="20" alt="">GitHub</a></li>
+                    <li><a href="https://www.linkedin.com/in/vicente-megido-garc%C3%ADa-9a67a934b/" target="_blank" rel="noopener noreferrer"><img src="multimedia/linkedin.svg" width="20" height="20" alt="">LinkedIn</a></li>
+                    <li><a href="mailto:vicentemegidogarcia@gmail.com"><img src="multimedia/correo.svg" width="20" height="20" alt=""><span data-i18n="pie.correo">Correo</span></a></li>
+                </ul>
+            </nav>
+        </footer>
     </body>
 </html>

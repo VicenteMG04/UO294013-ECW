@@ -19,7 +19,13 @@
 /* Especificidad 001 */
 html {
     font-size: 100%;
-    scroll-behavior: smooth;
+}
+
+/* Especificidad 001 | Solo se anima el desplazamiento si el usuario no pide reducir movimiento */
+@media (prefers-reduced-motion: no-preference) {
+    html {
+        scroll-behavior: smooth;
+    }
 }
 
 /* Especificidad 001 */
@@ -27,7 +33,7 @@ body {
     margin: 0;
     background: var(--papel);
     color: var(--tinta);
-    font-family: Georgia, "Times New Roman", sans-serif;
+    font-family: Georgia, "Times New Roman", serif;
     line-height: 1.5;
 }
 
@@ -45,32 +51,167 @@ a:hover {
 
 /* Especificidad 002 */
 body > header {
-    gap: 1rem;
+    gap: .75rem;
     padding: 1.25rem max(1rem, calc((100% - 72rem) / 2));
     border-bottom: 1px solid var(--borde);
     background: var(--blanco);
     color: var(--tinta);
 }
 
-/* Especificidad 003 */
-body > header h1 {
-    margin: 0;
-    font-size: clamp(1rem, 1.25rem, 1.75rem);
+/* Especificidad 003 | Logotipo: enlace a la portada */
+body > header > a {
+    background: var(--blanco);
 }
 
 /* Especificidad 004 */
-body > header h1 a {
-    color: var(--tinta);
-    background-color: var(--blanco);
-    text-decoration: none;
+body > header > a > img {
+    width: 2.5rem;
+    height: 2.5rem;
+    margin-right: 0;
+}
+
+/* Especificidad 003 | Botón de menú (hamburguesa) */
+body > header > button {
+    padding: .4rem;
+    border: 1px solid var(--tinta);
+    background: var(--blanco);
+}
+
+/* Especificidad 013 */
+body > header > button:hover,
+body > header > button:focus-visible {
+    border-color: var(--coral);
+    background: var(--papel);
 }
 
 /* Especificidad 004 */
 body > header nav ul {
-    gap: .5rem;
+    gap: .25rem;
     margin: 0;
     padding: 0;
     list-style: none;
+}
+
+/* Especificidad 004 | Botón de lupa del buscador */
+body > header search button {
+    padding: .4rem .6rem;
+    border-radius: 0 var(--radio) var(--radio) 0;
+}
+
+/* Especificidad 003 */
+body > header search input {
+    margin-top: 0;
+    padding: .4rem .6rem;
+    border-right: 0;
+    border-radius: var(--radio) 0 0 var(--radio);
+    font-size: .9rem;
+}
+
+/* Especificidad 014 | El foco del buscador se dibuja alrededor del conjunto campo + lupa, no solo del campo */
+body > header search input:focus-visible,
+body > header search button:focus-visible {
+    outline: none;
+}
+
+/* Especificidad 024 */
+body > header search form:focus-within {
+    border-radius: var(--radio);
+    outline: .2rem solid var(--coral);
+    outline-offset: .2rem;
+}
+
+/* Especificidad 003 | Interruptor de idioma ES / EN */
+body > header fieldset {
+    margin: 0;
+    padding: 0;
+    border: 1px solid var(--tinta);
+    border-radius: 99rem;
+    background: var(--blanco);
+    font-size: .85rem;
+    font-weight: 700;
+}
+
+/* Especificidad 005 */
+body > header fieldset label span {
+    padding: .35rem .8rem;
+    color: var(--tinta);
+    cursor: pointer;
+}
+
+/* Especificidad 006 | La opción activa se rellena; la tecla Tab muestra el foco sobre la píldora */
+body > header fieldset input:checked + span {
+    background: var(--tinta);
+    color: var(--blanco);
+}
+
+body > header fieldset input:focus-visible + span {
+    outline: .2rem solid var(--coral);
+    outline-offset: -.2rem;
+}
+
+/* Especificidad 002 | Título principal con botón de ayuda (i) */
+main > header {
+    gap: .75rem;
+}
+
+/* Especificidad 003 */
+main > header > button {
+    display: inline-flex;
+    padding: .3rem;
+    border: 1px solid var(--tinta);
+    border-radius: 50%;
+    background: var(--blanco);
+}
+
+/* Especificidad 013 */
+main > header > button:hover,
+main > header > button:focus-visible {
+    border-color: var(--coral);
+    background: var(--papel);
+}
+
+/* Especificidad 001 | Ventana de ayuda (diálogo nativo) */
+dialog {
+    max-width: min(32rem, calc(100% - 2rem));
+    padding: var(--espacio);
+    border: 1px solid var(--borde);
+    border-top: .3rem solid var(--coral);
+    border-radius: var(--radio);
+    background: var(--blanco);
+    color: var(--tinta);
+}
+
+/* Especificidad 011 */
+dialog::backdrop {
+    background: rgba(23, 35, 41, .55);
+}
+
+/* Especificidad 002 */
+dialog h2 {
+    margin-bottom: .5rem;
+}
+
+/* Especificidad 002 */
+dialog form {
+    text-align: right;
+}
+
+/* Especificidad 011 */
+mark {
+    background: var(--papel);
+    color: var(--tinta);
+    border-bottom: .15rem solid var(--coral);
+}
+
+/* Especificidad 003 */
+main > section > article > ol li {
+    margin-bottom: 1rem;
+}
+
+/* Especificidad 004 */
+main > section > article > ol p {
+    margin: .25rem 0 0;
+    color: var(--texto-secundario);
 }
 
 /* Especificidad 002 */
@@ -103,16 +244,29 @@ main {
     padding-block: 2rem 3rem;
 }
 
-/* Especificidad 002 */
-main > h1 {
-    margin-block: 0 2rem;
-    font-size: clamp(1.75rem, 2rem, 2.5rem);
+/* Especificidad 001 */
+h1 {
+    margin-top: 0;
+    font-size: 1.5rem;
 }
 
 /* Especificidad 001 */
 h2 {
     margin-top: 0;
-    font-size: clamp(1.25rem, 1.5rem, 2rem);
+    font-size: 1.25rem;
+}
+
+/* Especificidad 003 | Títulos de bloque junto a su botón de ayuda: sin márgenes para que queden alineados */
+main > header > h1,
+main > header > h2 {
+    margin: 0;
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+/* Especificidad 002 */
+main > header {
+    margin-bottom: 1.25rem;
 }
 
 /* Especificidad 001 */
@@ -131,6 +285,21 @@ main > section + section {
     margin-top: 3rem;
 }
 
+/* Especificidad 002 */
+main > nav {
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+/* Especificidad 013 | 013: signos < y > decorativos que indican la dirección de los enlaces anterior/siguiente */
+main > nav a[rel="prev"]::before {
+    content: "<\00a0";
+}
+
+main > nav a[rel="next"]::after {
+    content: "\00a0>";
+}
+
 /* Especificidad 004 */
 main > section > article > a {
     margin-top: auto;
@@ -142,6 +311,55 @@ main > section > article > p {
     background: var(--blanco);
     font-size: .85rem;
     font-weight: 700;
+}
+
+/* Especificidad 003 */
+main > section > article details {
+    padding-block: .75rem;
+    border-bottom: 1px solid var(--borde);
+}
+
+/* Especificidad 004 | Separación entre el vídeo y su descripción */
+main > section > article video + details {
+    margin-top: 1rem;
+}
+
+/* Especificidad 004 */
+main > section > article summary {
+    font-weight: 700;
+    cursor: pointer;
+}
+
+/* Especificidad 004 */
+main > section > article details > p {
+    margin-block: .5rem 0;
+    color: var(--texto-secundario);
+}
+
+/* Especificidad 001 | Aparición suave del diálogo de ayuda (solo si el usuario no pide reducir movimiento) */
+@media (prefers-reduced-motion: no-preference) {
+    dialog[open] {
+        animation: aparecer .3s ease-out;
+    }
+}
+
+@keyframes aparecer {
+    from {
+        opacity: 0;
+        transform: translateY(-.5rem);
+    }
+}
+
+/* Especificidad 003 */
+main > section > article dt {
+    margin-top: 1rem;
+    font-weight: 700;
+}
+
+/* Especificidad 003 */
+main > section > article dd {
+    margin-left: 0;
+    color: var(--texto-secundario);
 }
 
 /* Especificidad 001 */
@@ -195,7 +413,7 @@ main > section > article > a:focus-visible,
 button:hover,
 button:focus-visible {
     background: var(--coral);
-    color: var(--tinta);
+    color: var(--blanco);
 }
 
 /* Especificidad 011 */
@@ -213,8 +431,8 @@ ul[aria-label] li {
     font-size: .9rem;
 }
 
-/* Especificidad 001 */
-form {
+/* Especificidad 003 */
+main > section > form {
     margin-bottom: 2rem;
     padding: var(--espacio);
     border: 1px solid var(--borde);
@@ -224,9 +442,23 @@ form {
     gap: 1rem;
 }
 
-/* Especificidad 002 */
-form > p {
+/* Especificidad 004 */
+main > section > form > p {
     margin: 0;
+    color: var(--texto-secundario);
+    font-size: .9rem;
+}
+
+/* Especificidad 004 | El aviso de envío solo se muestra cuando tiene contenido */
+main > section > form > output {
+    padding: .75rem;
+    border-left: .3rem solid var(--coral);
+    background: var(--papel);
+}
+
+/* Especificidad 014 */
+main > section > form > output:empty {
+    display: none;
 }
 
 /* Especificidad 001 */
@@ -251,8 +483,14 @@ textarea {
     resize: vertical;
 }
 
+/* Especificidad 002 | Icono decorativo delante del texto del enlace */
+a > img {
+    margin-right: .4rem;
+}
+
 /* Especificidad 001 */
 footer {
+    gap: 1rem;
     margin-top: auto;
     padding: 1.5rem max(1rem, calc((100% - 72rem) / 2));
     background: var(--tinta);
@@ -264,8 +502,30 @@ footer p {
     margin: 0;
 }
 
+/* Especificidad 003 */
+footer nav ul {
+    gap: .5rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+/* Especificidad 014 | 014: en el pie el fondo es oscuro, el estado activo usa coral */
+footer nav a:hover,
+footer nav a:focus-visible {
+    background: var(--coral);
+    color: var(--blanco);
+}
+
 /* Especificidad 010 */
 :focus-visible {
     outline: .2rem solid var(--coral);
     outline-offset: .2rem;
+}
+
+/* Especificidad 003 | Pantallas pequeñas: enlaces del menú con mayor área táctil */
+@media (max-width: 47.99rem) {
+    body > header nav a {
+        padding: .75rem;
+    }
 }

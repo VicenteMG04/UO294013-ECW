@@ -1,6 +1,6 @@
 /*
  * Estructura de mi sitio personal.
- * HTML5 + CSS3 puro. 
+ * HTML5 + CSS3 puro.
  * Se utiliza Flexbox para los flujos de una dimensión.
  * Las medidas de tamaño y espacio son relativas: rem, % y fr.
 */
@@ -24,20 +24,106 @@ body {
     min-height: 100vh;
 }
 
+/* Especificidad 010: los elementos ocultos con el atributo hidden no deben mostrarse nunca */
+[hidden] {
+    display: none;
+}
+
 /* Especificidad 002 */
 body > header {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    justify-content: space-evenly;
+    justify-content: space-between;
+}
+
+/* Especificidad 003: logotipo y nombre del sitio */
+body > header > a {
+    display: flex;
+    align-items: center;
+}
+
+/* Especificidad 003: botón que abre y cierra el menú en pantallas pequeñas */
+body > header > button {
+    display: inline-flex;
+    margin-left: auto;
+}
+
+/* Especificidad 013: sin JavaScript el botón no existe y el menú se ve completo */
+body > header > button[hidden] {
+    display: none;
 }
 
 /* Especificidad 003 */
 body > header nav {
+    flex: 1 1 auto;
+}
+
+/* Especificidad 004 */
+body > header nav ul {
     display: flex;
-    flex: 1 1 30rem;
     flex-wrap: wrap;
     justify-content: space-evenly;
+}
+
+/* Especificidad 003 */
+body > header search {
+    flex: 0 1 auto;
+}
+
+/* Especificidad 004 */
+body > header search form {
+    display: flex;
+    align-items: stretch;
+}
+
+/* Especificidad 003: interruptor de idioma en forma de píldora */
+body > header fieldset {
+    display: inline-flex;
+    overflow: hidden;
+}
+
+/* Especificidad 014: sin JavaScript el interruptor no se ve, pero conserva su espacio para evitar saltos de diseño */
+body > header fieldset[hidden] {
+    display: inline-flex;
+    visibility: hidden;
+}
+
+/* Especificidad 004 */
+body > header fieldset label {
+    position: relative;
+}
+
+/* Especificidad 004: el botón de radio real queda superpuesto e invisible (sigue siendo accesible) */
+body > header fieldset input {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    margin: 0;
+    opacity: 0;
+}
+
+/* Especificidad 005 */
+body > header fieldset label span {
+    display: block;
+}
+
+/* Especificidad 002: cabecera de cada título principal con su botón de ayuda */
+main > header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Especificidad 003: el botón de ayuda no se encoge ni salta de línea */
+main > header > button {
+    flex-shrink: 0;
+}
+
+/* Especificidad 003 */
+main > header > button[hidden] {
+    display: inline-block;
+    visibility: hidden;
 }
 
 /* Especificidad 002 */
@@ -56,13 +142,7 @@ h3 {
 ul[aria-label] {
     display: flex;
     flex-wrap: wrap;
-}
-
-/* Especificidad 004 */
-body > header nav ul {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: flex-end;
+    justify-content: space-evenly;
 }
 
 /* Especificidad 001 */
@@ -78,16 +158,24 @@ main > section {
     align-items: stretch;
 }
 
-/* Especificidad 003 | 003 */
+/* Especificidad 003 | 003 | 003 */
 main > section > article,
-main > section > figure {
+main > section > figure,
+main > section > form {
     flex: 1 1 18rem;
     min-width: 0;
 }
 
-/* Especificidad 011 */
-ul[aria-label] {
-    justify-content: space-evenly;
+/* Especificidad 002 */
+main > nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+/* Especificidad 012: si solo hay enlace "siguiente", se alinea a la derecha */
+main > nav a[rel="next"] {
+    margin-left: auto;
 }
 
 /* Especificidad 001 */
@@ -95,14 +183,28 @@ label {
     display: block;
 }
 
+/* Especificidad 001 */
+figcaption {
+    justify-self: center;
+}
+
 /* Especificidad 002 */
 figure img {
     width: 100%;
 }
 
-/* Especificidad 001 */
-figcaption {
-    justify-self: center;
+/* Especificidad 004: en las tarjetas de intereses todas las fotos tienen la misma proporción */
+main > section > article > figure img {
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+}
+
+/* Especificidad 002: icono decorativo dentro de un enlace */
+a > img {
+    display: inline-block;
+    width: 1.25rem;
+    height: 1.25rem;
+    vertical-align: text-bottom;
 }
 
 /* Especificidad 001 | 001 */
@@ -110,6 +212,11 @@ input,
 textarea {
     width: 100%;
     max-height: 20rem;
+}
+
+/* Especificidad 003 */
+body > header search input {
+    width: 8rem;
 }
 
 /* Especificidad 001 */
@@ -123,16 +230,11 @@ main > section > article {
     flex-direction: column;
 }
 
-/* Especificidad 004 */
+/* Especificidad 004 | 001 */
 main > section > article > a,
 button {
     display: inline-block;
     align-self: center;
-}
-
-/* Especificidad 004 */
-main > section > article > p {
-    text-align: justify;
 }
 
 /* Especificidad 001 | 001 */
@@ -143,31 +245,75 @@ video {
     height: auto;
 }
 
-/* Especificidad 001 */
+/* Especificidad 001 | 001 */
 video,
 audio {
     width: 100%;
 }
 
-/* Especificidad 001 */
-form {
+/* Especificidad 003 */
+main > section > form {
     display: flex;
     flex-direction: column;
-    flex-wrap: wrap;
 }
 
-/* Especificidad 002 */
-form > p {
-    flex: 1 1 18rem;
+/* Especificidad 004: se reserva la altura del mensaje de resultados para evitar saltos de diseño */
+main > section > article > output {
+    display: block;
+    min-height: 1.5rem;
 }
 
-/* Especificidad 012 */
-form > p:last-child {
-    flex-basis: 100%;
+/* Especificidad 003 */
+main > section > article > ol {
+    padding-left: 1.25rem;
 }
 
 /* Especificidad 001 */
 footer {
     display: flex;
-    justify-content: center;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* Especificidad 003 */
+footer nav ul {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+/* Especificidad 002 | Pantallas anchas: el menú permanece visible al desplazarse y no hace falta el botón */
+@media (min-width: 48rem) {
+    body > header {
+        position: sticky;
+        top: 0;
+        z-index: 1;
+    }
+
+    body > header > button {
+        display: none;
+    }
+}
+
+/* Pantallas pequeñas: navegación, buscador e idioma se apilan y se pliegan tras el botón de menú */
+@media (max-width: 47.99rem) {
+    body > header nav,
+    body > header search {
+        flex: 1 1 100%;
+    }
+
+    body > header nav ul {
+        flex-direction: column;
+    }
+
+    body > header search form input {
+        flex: 1;
+        width: auto;
+    }
+
+    body > header[data-menu="cerrado"] > nav,
+    body > header[data-menu="cerrado"] > search,
+    body > header[data-menu="cerrado"] > fieldset {
+        display: none;
+    }
 }
