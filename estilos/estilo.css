@@ -529,3 +529,17 @@ footer nav a:focus-visible {
         padding: .75rem;
     }
 }
+
+/* Especificidad 002 | Aviso de cookies (tinta sobre blanco, contraste aproximado 15:1) */
+body > aside {
+    border-top: .2rem solid var(--tinta);
+    background: var(--blanco);
+    color: var(--tinta);
+}
+
+/* Especificidad 003 | Botón del pie para cambiar la decisión: contorno claro sobre fondo oscuro */
+footer button {
+    border: .1rem solid var(--papel);
+    background: transparent;
+    color: var(--papel);
+}

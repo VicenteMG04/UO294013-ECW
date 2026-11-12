@@ -317,3 +317,26 @@ footer nav ul {
         display: none;
     }
 }
+
+/* Especificidad 002 | Aviso de cookies: anclado al borde inferior de la ventana sin tapar el contenido */
+body > aside {
+    position: sticky;
+    bottom: 0;
+    z-index: 2;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem max(1rem, calc((100% - 72rem) / 2));
+}
+
+/* Especificidad 012 | display:flex anularía el atributo hidden */
+body > aside[hidden] {
+    display: none;
+}
+
+/* Especificidad 003 */
+body > aside p {
+    flex: 1 1 20rem;
+    margin: 0;
+}

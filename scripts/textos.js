@@ -188,7 +188,13 @@ const TEXTOS = {
         "formulario.asunto": "Mensaje desde tu sitio web",
         "formulario.cuerpo-nombre": "Nombre",
         "formulario.cuerpo-email": "Email",
-        "formulario.confirmacion": "Se está abriendo tu aplicación de correo con el mensaje preparado. Si no se abre, escribe directamente a uo294013@uniovi.es."
+        "formulario.confirmacion": "Se está abriendo tu aplicación de correo con el mensaje preparado. Si no se abre, escribe directamente a uo294013@uniovi.es.",
+        "cookies.etiqueta": "Aviso de cookies",
+        "cookies.texto": "Uso Microsoft Clarity para analizar de forma anónima cómo se usa este sitio (clics, desplazamiento y grabaciones de sesión). Solo se activa si lo aceptas.",
+        "cookies.enlace": "Más información",
+        "cookies.aceptar": "Aceptar",
+        "cookies.rechazar": "Rechazar",
+        "cookies.gestionar": "Cookies"
     },
     en: {
         "nav.principal": "Main navigation",
@@ -373,7 +379,13 @@ const TEXTOS = {
         "formulario.asunto": "Message from your website",
         "formulario.cuerpo-nombre": "Name",
         "formulario.cuerpo-email": "Email",
-        "formulario.confirmacion": "Your email application is opening with the message ready. If it doesn't open, write directly to uo294013@uniovi.es."
+        "formulario.confirmacion": "Your email application is opening with the message ready. If it doesn't open, write directly to uo294013@uniovi.es.",
+        "cookies.etiqueta": "Cookie notice",
+        "cookies.texto": "I use Microsoft Clarity to analyse anonymously how this site is used (clicks, scrolling and session recordings). It only runs if you accept.",
+        "cookies.enlace": "More information",
+        "cookies.aceptar": "Accept",
+        "cookies.rechazar": "Reject",
+        "cookies.gestionar": "Cookies"
     }
 };
 
