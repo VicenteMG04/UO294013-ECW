@@ -33,14 +33,14 @@
             </nav>
             <search>
                 <form action="buscar.html">
-                    <input type="search" name="q" required placeholder="Buscar" aria-label="Buscar" data-i18n-placeholder="buscar.placeholder" data-i18n-aria-label="buscar.placeholder">
+                    <input type="search" name="q" required placeholder="Buscar" title="Buscar" aria-label="Buscar" data-i18n-placeholder="buscar.placeholder" data-i18n-title="buscar.placeholder" data-i18n-aria-label="buscar.placeholder">
                     <button type="submit" aria-label="Buscar" data-i18n-aria-label="buscar.boton"><img src="multimedia/buscar.svg" width="20" height="20" alt=""></button>
                 </form>
             </search>
             <fieldset hidden>
                 <legend data-i18n="idioma.etiqueta">Idioma</legend>
-                <label><input type="radio" name="idioma" value="es" aria-label="Español" checked><span>ES</span></label>
-                <label><input type="radio" name="idioma" value="en" aria-label="English"><span>EN</span></label>
+                <label><input type="radio" name="idioma" value="es" title="Español" aria-label="Español" checked><span>ES</span></label>
+                <label><input type="radio" name="idioma" value="en" title="English" aria-label="English"><span>EN</span></label>
             </fieldset>
         </header>
         <main>
@@ -51,7 +51,7 @@
                     <h2 data-i18n="ayuda.titulo">Ayuda</h2>
                     <p data-i18n="ayuda.contacto">Puedes escribirme por correo, LinkedIn o GitHub. Si usas el formulario, se abrirá tu aplicación de correo con el mensaje preparado para enviarlo.</p>
                     <form method="dialog">
-                        <button data-i18n="ayuda.cerrar">Cerrar</button>
+                        <button type="submit" data-i18n="ayuda.cerrar">Cerrar</button>
                     </form>
                 </dialog>
             </header>
@@ -78,15 +78,15 @@
                     <p data-i18n="formulario.obligatorio">Los campos marcados con * son obligatorios.</p>
                     <label>
                         <span data-i18n="formulario.nombre">Nombre</span><span aria-hidden="true"> *</span>
-                        <input name="nombre" autocomplete="name" required>
+                        <input name="nombre" autocomplete="name" title="Nombre" data-i18n-title="formulario.nombre" required>
                     </label>
                     <label>
                         <span data-i18n="formulario.email">Email</span><span aria-hidden="true"> *</span>
-                        <input name="email" type="email" autocomplete="email" required>
+                        <input name="email" type="email" autocomplete="email" title="Email" data-i18n-title="formulario.email" required>
                     </label>
                     <label>
                         <span data-i18n="formulario.mensaje">Mensaje</span><span aria-hidden="true"> *</span>
-                        <textarea name="mensaje" required></textarea>
+                        <textarea name="mensaje" title="Mensaje" data-i18n-title="formulario.mensaje" required></textarea>
                     </label>
                     <p data-i18n="formulario.ayuda">Al enviar, se abrirá tu aplicación de correo con el mensaje ya redactado; solo tendrás que enviarlo desde ella.</p>
                     <button type="submit" data-i18n="formulario.enviar">Enviar mensaje</button>

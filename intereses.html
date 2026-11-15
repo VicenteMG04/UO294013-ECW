@@ -32,14 +32,14 @@
             </nav>
             <search>
                 <form action="buscar.html">
-                    <input type="search" name="q" required placeholder="Buscar" aria-label="Buscar" data-i18n-placeholder="buscar.placeholder" data-i18n-aria-label="buscar.placeholder">
+                    <input type="search" name="q" required placeholder="Buscar" title="Buscar" aria-label="Buscar" data-i18n-placeholder="buscar.placeholder" data-i18n-title="buscar.placeholder" data-i18n-aria-label="buscar.placeholder">
                     <button type="submit" aria-label="Buscar" data-i18n-aria-label="buscar.boton"><img src="multimedia/buscar.svg" width="20" height="20" alt=""></button>
                 </form>
             </search>
             <fieldset hidden>
                 <legend data-i18n="idioma.etiqueta">Idioma</legend>
-                <label><input type="radio" name="idioma" value="es" aria-label="Español" checked><span>ES</span></label>
-                <label><input type="radio" name="idioma" value="en" aria-label="English"><span>EN</span></label>
+                <label><input type="radio" name="idioma" value="es" title="Español" aria-label="Español" checked><span>ES</span></label>
+                <label><input type="radio" name="idioma" value="en" title="English" aria-label="English"><span>EN</span></label>
             </fieldset>
         </header>
         <main>
@@ -50,7 +50,7 @@
                     <h2 data-i18n="ayuda.titulo">Ayuda</h2>
                     <p data-i18n="ayuda.intereses">Galería de mis aficiones. Cada tarjeta lleva una foto con su descripción; las imágenes se cargan a medida que te desplazas por la página.</p>
                     <form method="dialog">
-                        <button data-i18n="ayuda.cerrar">Cerrar</button>
+                        <button type="submit" data-i18n="ayuda.cerrar">Cerrar</button>
                     </form>
                 </dialog>
             </header>

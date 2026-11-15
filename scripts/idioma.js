@@ -7,7 +7,7 @@
 (function () {
     'use strict';
 
-    const ATRIBUTOS = ['alt', 'aria-label', 'content', 'placeholder'];
+    const ATRIBUTOS = ['alt', 'aria-label', 'content', 'placeholder', 'title'];
     const IDIOMA_POR_DEFECTO = 'es';
     const selector = document.querySelector('body > header fieldset');
     const opciones = document.querySelectorAll('body > header input[name="idioma"]');
