@@ -1,7 +1,8 @@
 /*
  * Tema común del sitio personal.
  * Paleta: tinta #172329 sobre papel #f7f4ed (contraste aproximado 13:1).
- * Rojo coral #b2402f: 5,2:1 sobre papel, 5,6:1 sobre blanco y 5,6:1 como fondo de texto blanco (WCAG AA).
+ * Rojo coral #b2402f: 5,2:1 sobre papel, 5,6:1 sobre blanco y 5,6:1 como fondo de texto blanco (WCAG AA); se usa en bordes, fondos y focos.
+ * Rojo para texto #942b1d: 7,9:1 sobre blanco y 7,3:1 sobre papel (WCAG AAA); se usa en enlaces y en el asterisco de campo obligatorio.
  * No se utilizan clases ni identificadores: la cascada parte de HTML5.
 */
 
@@ -12,6 +13,7 @@
     --papel: #f7f4ed;
     --blanco: #fffdf8;
     --coral: #b2402f;
+    --coral-texto: #942b1d;
     --borde: #d8d0c1;
     --espacio: 1.5rem;
     --radio: .35rem;
@@ -41,7 +43,7 @@ body {
 
 /* Especificidad 001 */
 a {
-    color: var(--coral);
+    color: var(--coral-texto);
     background: var(--blanco);
 }
 
@@ -494,7 +496,7 @@ main > section > form > p {
 /* Especificidad 004 | Asterisco de campo obligatorio */
 label > span[aria-hidden="true"] {
     background: var(--blanco);
-    color: var(--coral);
+    color: var(--coral-texto);
 }
 
 /* Especificidad 004 | El aviso de envío solo se muestra cuando tiene contenido */
