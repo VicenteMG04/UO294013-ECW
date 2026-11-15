@@ -12,7 +12,7 @@
         { url: 'index.html', clave: 'nav.inicio' },
         { url: 'sobre-mi.html', clave: 'nav.sobre-mi' },
         { url: 'intereses.html', clave: 'nav.intereses' },
-        { url: 'indispensables.html', clave: 'nav.indispensables' },
+        { url: 'curiosidades.html', clave: 'nav.curiosidades' },
         { url: 'contacto.html', clave: 'nav.contacto' }
     ];
     const ELEMENTOS = 'main h1, main h2, main h3, main p, main li, main summary, main dt, main dd, main figcaption';

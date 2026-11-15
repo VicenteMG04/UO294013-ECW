@@ -94,7 +94,7 @@ lo marca como contenido mixto / no seguro (Buenas prácticas 79).
 - index.html: Portada, presentación del sitio.
 - sobre-mi.html: Información personal, formación, experiencia, rasgos y avales.
 - intereses.html: Aficiones y principales temas de interés.
-- indispensables.html: Más información y curiosidades.
+- curiosidades.html: Más información y curiosidades.
 - contacto.html: Datos personales y formulario de contacto.
 - buscar.html: Resultados del buscador global.
 - 404.html: Página de error personalizada (GitHub Pages). Usa

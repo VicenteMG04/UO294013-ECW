@@ -37,21 +37,10 @@ body > header {
     justify-content: space-between;
 }
 
-/* Especificidad 003: logotipo y nombre del sitio */
-body > header > a {
-    display: flex;
-    align-items: center;
-}
-
 /* Especificidad 003: botón que abre y cierra el menú en pantallas pequeñas */
 body > header > button {
     display: inline-flex;
     margin-left: auto;
-}
-
-/* Especificidad 013: sin JavaScript el botón no existe y el menú se ve completo */
-body > header > button[hidden] {
-    display: none;
 }
 
 /* Especificidad 003 */
@@ -59,16 +48,27 @@ body > header nav {
     flex: 1 1 auto;
 }
 
+/* Especificidad 003 */
+body > header search {
+    flex: 0 1 auto;
+}
+
+/* Especificidad 003: logotipo y nombre del sitio */
+body > header > a {
+    display: flex;
+    align-items: center;
+}
+
+/* Especificidad 013: sin JavaScript el botón no existe y el menú se ve completo */
+body > header > button[hidden] {
+    display: none;
+}
+
 /* Especificidad 004 */
 body > header nav ul {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
-}
-
-/* Especificidad 003 */
-body > header search {
-    flex: 0 1 auto;
 }
 
 /* Especificidad 004 */
@@ -290,15 +290,15 @@ footer nav ul {
         z-index: 1;
     }
 
-    body > header > button {
+    body > header > button:not([hidden]) {
         display: none;
     }
 }
 
 /* Pantallas pequeñas: navegación, buscador e idioma se apilan y se pliegan tras el botón de menú */
 @media (max-width: 47.99rem) {
-    body > header nav,
-    body > header search {
+    body > header > nav,
+    body > header > search {
         flex: 1 1 100%;
     }
 
@@ -318,10 +318,12 @@ footer nav ul {
     }
 }
 
-/* Especificidad 002 | Aviso de cookies: anclado al borde inferior de la ventana sin tapar el contenido */
+/* Especificidad 002 | Aviso de cookies: fijo en el borde inferior de la ventana */
 body > aside {
-    position: sticky;
+    position: fixed;
+    right: 0;
     bottom: 0;
+    left: 0;
     z-index: 2;
     display: flex;
     flex-wrap: wrap;

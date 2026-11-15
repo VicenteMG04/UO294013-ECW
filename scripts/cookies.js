@@ -9,6 +9,7 @@
 
     const ID_CLARITY = 'zcln8rxqjp';
     const CLAVE = 'consentimiento-analitica';
+    const CLAVE_USUARIO = 'usuario-prueba';
     const ACEPTADO = 'aceptado';
     const RECHAZADO = 'rechazado';
     const ENLACE_PRIVACIDAD = 'https://privacy.microsoft.com/es-es/privacystatement';
@@ -44,6 +45,38 @@
             y = l.getElementsByTagName(r)[0];
             y.parentNode.insertBefore(t, y);
         })(window, document, 'clarity', 'script', ID_CLARITY);
+        enviarConsentimiento();
+        identificarUsuarioDePrueba();
+    }
+
+    /*
+     * Clarity exige una señal explícita de consentimiento (Consent Mode) para usar sus cookies en el EEE.
+     * Sin ella no puede enlazar las páginas de una visita y cada página queda como una grabación distinta.
+     * Solo se concede el almacenamiento analítico; el publicitario se deniega siempre.
+     */
+    function enviarConsentimiento() {
+        window.clarity('consentv2', { ad_Storage: 'denied', analytics_Storage: 'granted' });
+    }
+
+    /*
+     * Pruebas de usabilidad: con ?u=U1 en la URL se etiqueta la sesión con el código del usuario y se
+     * recuerda durante la pestaña, para poder filtrar y reunir sus grabaciones en Clarity.
+     */
+    function identificarUsuarioDePrueba() {
+        let codigo = new URLSearchParams(window.location.search).get('u');
+        try {
+            if (codigo) {
+                sessionStorage.setItem(CLAVE_USUARIO, codigo);
+            } else {
+                codigo = sessionStorage.getItem(CLAVE_USUARIO);
+            }
+        } catch (error) {
+            /* Sin almacenamiento: solo se etiqueta la página en la que llega el parámetro. */
+        }
+        if (codigo && /^[A-Za-z0-9_-]{1,20}$/.test(codigo)) {
+            window.clarity('identify', codigo);
+            window.clarity('set', 'usuario', codigo);
+        }
     }
 
     function decidir(decision) {
@@ -53,6 +86,7 @@
             cargarClarity();
         } else if (window.clarity) {
             /* Retira el consentimiento y borra las cookies de Clarity si ya estaba en marcha. */
+            window.clarity('consentv2', { ad_Storage: 'denied', analytics_Storage: 'denied' });
             window.clarity('consent', false);
         }
     }

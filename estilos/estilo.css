@@ -1,6 +1,7 @@
 /*
  * Tema común del sitio personal.
  * Paleta: tinta #172329 sobre papel #f7f4ed (contraste aproximado 13:1).
+ * Rojo coral #b2402f: 5,2:1 sobre papel, 5,6:1 sobre blanco y 5,6:1 como fondo de texto blanco (WCAG AA).
  * No se utilizan clases ni identificadores: la cascada parte de HTML5.
 */
 
@@ -10,15 +11,16 @@
     --texto-secundario: #41545a;
     --papel: #f7f4ed;
     --blanco: #fffdf8;
-    --coral: #b75744;
+    --coral: #b2402f;
     --borde: #d8d0c1;
     --espacio: 1.5rem;
     --radio: .35rem;
 }
 
-/* Especificidad 001 */
+/* Especificidad 001 | Tamaño base de 18 px que crece de forma progresiva en monitores grandes (24 px a partir de 2560 px).
+   Si el usuario cambia el tamaño de letra del navegador, el mínimo (1.125rem) lo respeta. */
 html {
-    font-size: 100%;
+    font-size: clamp(1.125rem, .64rem + .54vw, 1.5rem);
 }
 
 /* Especificidad 001 | Solo se anima el desplazamiento si el usuario no pide reducir movimiento */
@@ -61,6 +63,7 @@ body > header {
 /* Especificidad 003 | Logotipo: enlace a la portada */
 body > header > a {
     background: var(--blanco);
+    color: var(--tinta);
 }
 
 /* Especificidad 004 */
@@ -72,9 +75,13 @@ body > header > a > img {
 
 /* Especificidad 003 | Botón de menú (hamburguesa) */
 body > header > button {
-    padding: .4rem;
+    align-items: center;
+    gap: .5rem;
+    padding: .4rem .75rem .4rem .5rem;
     border: 1px solid var(--tinta);
     background: var(--blanco);
+    color: var(--tinta);
+    font-weight: 700;
 }
 
 /* Especificidad 013 */
@@ -82,6 +89,7 @@ body > header > button:hover,
 body > header > button:focus-visible {
     border-color: var(--coral);
     background: var(--papel);
+    color: var(--tinta);
 }
 
 /* Especificidad 004 */
@@ -104,7 +112,7 @@ body > header search input {
     padding: .4rem .6rem;
     border-right: 0;
     border-radius: var(--radio) 0 0 var(--radio);
-    font-size: .9rem;
+    font-size: 1rem;
 }
 
 /* Especificidad 014 | El foco del buscador se dibuja alrededor del conjunto campo + lupa, no solo del campo */
@@ -127,13 +135,15 @@ body > header fieldset {
     border: 1px solid var(--tinta);
     border-radius: 99rem;
     background: var(--blanco);
-    font-size: .85rem;
+    color: var(--tinta);
+    font-size: .95rem;
     font-weight: 700;
 }
 
 /* Especificidad 005 */
 body > header fieldset label span {
     padding: .35rem .8rem;
+    background: var(--blanco);
     color: var(--tinta);
     cursor: pointer;
 }
@@ -161,6 +171,7 @@ main > header > button {
     border: 1px solid var(--tinta);
     border-radius: 50%;
     background: var(--blanco);
+    color: var(--tinta);
 }
 
 /* Especificidad 013 */
@@ -168,14 +179,16 @@ main > header > button:hover,
 main > header > button:focus-visible {
     border-color: var(--coral);
     background: var(--papel);
+    color: var(--tinta);
 }
 
 /* Especificidad 001 | Ventana de ayuda (diálogo nativo) */
 dialog {
     max-width: min(32rem, calc(100% - 2rem));
     padding: var(--espacio);
-    border: 1px solid var(--borde);
-    border-top: .3rem solid var(--coral);
+    border-style: solid;
+    border-width: .3rem 1px 1px;
+    border-color: var(--coral) var(--borde) var(--borde);
     border-radius: var(--radio);
     background: var(--blanco);
     color: var(--tinta);
@@ -184,6 +197,7 @@ dialog {
 /* Especificidad 011 */
 dialog::backdrop {
     background: rgba(23, 35, 41, .55);
+    color: var(--blanco);
 }
 
 /* Especificidad 002 */
@@ -211,6 +225,7 @@ main > section > article > ol li {
 /* Especificidad 004 */
 main > section > article > ol p {
     margin: .25rem 0 0;
+    background: var(--blanco);
     color: var(--texto-secundario);
 }
 
@@ -309,7 +324,7 @@ main > section > article > a {
 main > section > article > p {
     color: var(--texto-secundario);
     background: var(--blanco);
-    font-size: .85rem;
+    font-size: .95rem;
     font-weight: 700;
 }
 
@@ -333,6 +348,7 @@ main > section > article summary {
 /* Especificidad 004 */
 main > section > article details > p {
     margin-block: .5rem 0;
+    background: var(--blanco);
     color: var(--texto-secundario);
 }
 
@@ -359,6 +375,7 @@ main > section > article dt {
 /* Especificidad 003 */
 main > section > article dd {
     margin-left: 0;
+    background: var(--blanco);
     color: var(--texto-secundario);
 }
 
@@ -378,7 +395,7 @@ video {
 figcaption {
     margin-top: 1rem;
     margin-bottom: 1.5rem;
-    font-size: .8rem;
+    font-size: .9rem;
 }
 
 /* Especificidad 003 */
@@ -428,7 +445,7 @@ ul[aria-label] li {
     padding: .25rem .6rem;
     border: 1px solid var(--tinta);
     border-radius: 99rem;
-    font-size: .9rem;
+    font-size: .95rem;
 }
 
 /* Especificidad 003 */
@@ -445,8 +462,15 @@ main > section > form {
 /* Especificidad 004 */
 main > section > form > p {
     margin: 0;
+    background: var(--blanco);
     color: var(--texto-secundario);
-    font-size: .9rem;
+    font-size: .95rem;
+}
+
+/* Especificidad 004 | Asterisco de campo obligatorio */
+label > span[aria-hidden="true"] {
+    background: var(--blanco);
+    color: var(--coral);
 }
 
 /* Especificidad 004 | El aviso de envío solo se muestra cuando tiene contenido */
@@ -454,6 +478,7 @@ main > section > form > output {
     padding: .75rem;
     border-left: .3rem solid var(--coral);
     background: var(--papel);
+    color: var(--tinta);
 }
 
 /* Especificidad 014 */
@@ -517,6 +542,11 @@ footer nav a:focus-visible {
     color: var(--blanco);
 }
 
+/* Especificidad 011 | En el pie (fondo oscuro) el foco usa el color papel: el coral no llega a 3:1 sobre tinta */
+footer :focus-visible {
+    outline-color: var(--papel);
+}
+
 /* Especificidad 010 */
 :focus-visible {
     outline: .2rem solid var(--coral);
@@ -542,4 +572,37 @@ footer button {
     border: .1rem solid var(--papel);
     background: transparent;
     color: var(--papel);
+}
+
+/* Especificidad 003 | Mientras el aviso de cookies está visible (fijo abajo), el pie deja hueco para no quedar tapado */
+body > aside:not([hidden]) + footer {
+    padding-bottom: 6rem;
+}
+
+/* Pantallas táctiles: botones, interruptor de idioma y desplegables con área de pulsación de al menos 2,75rem */
+@media (pointer: coarse) {
+    body > header > button,
+    main > header > button,
+    body > header search button {
+        min-width: 2.75rem;
+        min-height: 2.75rem;
+    }
+
+    body > header fieldset label > span {
+        padding: .6rem 1rem;
+    }
+
+    main > section > article summary {
+        padding-block: .5rem;
+    }
+
+    footer nav a {
+        padding: .65rem .85rem;
+    }
+}
+
+@media (max-width: 47.99rem) {
+    body > aside:not([hidden]) ~ footer {
+        padding-bottom: 14rem;
+    }
 }
