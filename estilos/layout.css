@@ -14,7 +14,7 @@
 
 /* Especificidad 001 */
 html {
-    min-width: 20rem;
+    min-width: min(20rem, 100%);
 }
 
 /* Especificidad 001 */

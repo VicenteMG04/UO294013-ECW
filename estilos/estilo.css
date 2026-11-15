@@ -140,6 +140,16 @@ body > header fieldset {
     font-weight: 700;
 }
 
+/* Especificidad 004 | Leyenda del grupo de idioma: la leen los lectores de pantalla pero no se ve */
+body > header fieldset legend {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+}
+
 /* Especificidad 005 */
 body > header fieldset label span {
     padding: .35rem .8rem;
@@ -520,6 +530,14 @@ textarea {
 /* Especificidad 001 */
 textarea {
     resize: vertical;
+}
+
+/* Especificidad 006 | Enlaces sueltos (correos, perfiles y resultados de búsqueda) con una altura mínima de 24 px */
+main > section > article > p > a,
+main > section > article dd > a,
+main > section > article > ol > li > a {
+    display: inline-block;
+    padding-block: .2rem;
 }
 
 /* Especificidad 002 | Icono decorativo delante del texto del enlace */
