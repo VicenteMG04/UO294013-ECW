@@ -53,6 +53,11 @@ body > header search {
     flex: 0 1 auto;
 }
 
+/* Especificidad 004 | La lupa ocupa toda la altura del campo de búsqueda */
+body > header search button {
+    align-self: stretch;
+}
+
 /* Especificidad 003: logotipo y nombre del sitio */
 body > header > a {
     display: flex;

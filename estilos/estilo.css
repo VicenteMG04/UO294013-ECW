@@ -17,10 +17,10 @@
     --radio: .35rem;
 }
 
-/* Especificidad 001 | Tamaño base de 18 px que crece de forma progresiva en monitores grandes (24 px a partir de 2560 px).
+/* Especificidad 001 | Tamaño base de 18 px que crece muy poco en monitores grandes (21 px a partir de 2560 px).
    Si el usuario cambia el tamaño de letra del navegador, el mínimo (1.125rem) lo respeta. */
 html {
-    font-size: clamp(1.125rem, .64rem + .54vw, 1.5rem);
+    font-size: clamp(1.125rem, .884rem + .268vw, 1.3125rem);
 }
 
 /* Especificidad 001 | Solo se anima el desplazamiento si el usuario no pide reducir movimiento */
@@ -313,6 +313,20 @@ main > nav a[rel="prev"]::before {
 
 main > nav a[rel="next"]::after {
     content: "\00a0>";
+}
+
+/* Especificidad 003 | Enlaces anterior/siguiente con el mismo aspecto que los botones del resto del sitio */
+main > nav a {
+    padding: .75rem 1rem;
+    background: var(--tinta);
+    color: var(--blanco);
+}
+
+/* Especificidad 013 */
+main > nav a:hover,
+main > nav a:focus-visible {
+    background: var(--coral);
+    color: var(--blanco);
 }
 
 /* Especificidad 004 */
