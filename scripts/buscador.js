@@ -83,6 +83,11 @@
         return parrafo;
     }
 
+    /*
+     * Busca en todas las páginas descargadas. Un elemento es coincidencia si contiene todos los términos
+     * (sin tildes ni mayúsculas, en cualquier orden). Devuelve las páginas con coincidencias, ordenadas de
+     * más a menos, y la expresión regular que sirve para resaltar los términos.
+     */
     function buscar(paginas, terminos) {
         const normalizados = terminos.map(normalizar);
         const expresion = new RegExp(normalizados.map(escaparRegExp).join('|'), 'g');
@@ -107,6 +112,7 @@
         return { resultados: resultados, expresion: expresion };
     }
 
+    /* Pinta el recuento en <output> y la lista de resultados en <ol> (vacía si no hay consulta). */
     function mostrar(paginas) {
         lista.replaceChildren();
         if (consulta === '') {
@@ -118,7 +124,10 @@
         const total = encontrado.resultados.reduce(function (suma, r) { return suma + r.coincidencias.length; }, 0);
 
         const clave = total === 0 ? 'buscar.sin-resultados' : (total === 1 ? 'buscar.uno' : 'buscar.varios');
-        resumen.textContent = texto(clave).replace('{n}', total).replace('{q}', consulta);
+        /* Se usan funciones en replace para que "$&", "$1"... escritos por la persona no se interpreten. */
+        resumen.textContent = texto(clave)
+            .replace('{n}', function () { return total; })
+            .replace('{q}', function () { return consulta; });
 
         encontrado.resultados.forEach(function (resultado) {
             const elemento = document.createElement('li');
@@ -129,6 +138,13 @@
             resultado.coincidencias.slice(0, MAX_POR_PAGINA).forEach(function (contenido) {
                 elemento.append(crearFragmento(contenido, encontrado.expresion));
             });
+            /* El recuento incluye todas las coincidencias; se avisa de las que no se listan. */
+            const ocultas = resultado.coincidencias.length - MAX_POR_PAGINA;
+            if (ocultas > 0) {
+                const aviso = document.createElement('p');
+                aviso.textContent = texto(ocultas === 1 ? 'buscar.mas-uno' : 'buscar.mas').replace('{n}', function () { return ocultas; });
+                elemento.append(aviso);
+            }
             lista.append(elemento);
         });
     }
